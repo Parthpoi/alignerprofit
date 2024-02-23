@@ -12,7 +12,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  height: 100vh; /* Adjusted height */
   background-color: #f0f8ff; /* Light cyan background */
 }
 
@@ -20,14 +20,14 @@
   background-color: #f0ffff; /* Light cyan container background */
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 30px;
+  padding: 20px;
   width: 400px;
   max-width: 90%;
 }
 
 h2 {
-  font-size: 30px;
-  margin-bottom: 20px;
+  font-size: 24px; /* Reduced font size */
+  margin-bottom: 15px; /* Reduced margin */
   text-align: center;
   color: #265073; /* Dark blue */
 }
@@ -36,26 +36,26 @@ label {
   display: block;
   margin-bottom: 5px;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 16px; /* Reduced font size */
   color: #265073; /* Dark blue */
 }
 
 input {
   width: calc(100% - 10px);
-  padding: 10px;
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
-  font-size: 16px;
-  margin-bottom: 18px;
+  font-size: 14px; /* Reduced font size */
+  margin-bottom: 10px; /* Reduced margin */
 }
 
 button {
-  padding: 12px 24px;
+  padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px;
-  margin-top: 20px;
+  font-size: 16px; /* Reduced font size */
+  margin-top: 15px; /* Reduced margin */
   width: 100%;
   display: block;
   transition: all 0.3s ease;
@@ -79,9 +79,9 @@ button {
 }
 
 p {
-  margin-top: 20px;
+  margin-top: 15px; /* Reduced margin */
   font-weight: bold;
-  font-size: 16px;
+  font-size: 14px; /* Reduced font size */
   color: #333; /* Dark gray */
   text-align: center;
 }
@@ -90,7 +90,7 @@ p {
 #result1,
 #result2 {
   color: #211C6A; /* Dark purple */
-  font-size: 25px;
+  font-size: 18px; /* Reduced font size */
   font-family: "Helvetica";
 }
 </style>
@@ -98,6 +98,8 @@ p {
 <body>
   <div id="container">
     <h2>Profit Calculation for Pooja's Patient</h2>
+    <label for="caseno">Case No :</label>
+    <input type="number" id="caseno" value="0.0" onclick="clearContent(this)">
     <label for="totalcost">Total Cost Provided to Patient:</label>
     <input type="number" id="totalcost" value="0.0" onclick="clearContent(this)">
     <label for="alignercost">Aligner's Cost:</label>
@@ -109,7 +111,7 @@ p {
     <button id="calculateButton" onclick="calculateProfit()">Calculate Profit</button>
     <button id="resetButton" onclick="resetValues()">Reset</button>
     <p id="result">Pooja's Profit after Aligner Cost: 0.0</p>
-    <p id="result2">Share given to Clinic : 0.0</p>
+    <p id="result2">Share given to clinic : 0.0</p>
     <p id="result1">Pooja's profit after Clinic share: 0.0</p>
   </div>
 
@@ -124,7 +126,7 @@ p {
       var profitAfterClinicShare = profitAfterAlignerCost - (profitAfterAlignerCost * clinicShare / 100);
       document.getElementById('result1').innerText = "Pooja's profit after Clinic share: " + profitAfterClinicShare;
       var clinicshare = profitAfterAlignerCost - profitAfterClinicShare;
-      document.getElementById('result2').innerText = "Share given to Clinic : " + clinicshare;
+      document.getElementById('result2').innerText = "Share given to clinic : " + clinicshare;
     }
 
     function resetValues() {
@@ -132,6 +134,7 @@ p {
       document.getElementById('alignercost').value = 0.0;
       document.getElementById('alignerdiscount').value = 0.0;
       document.getElementById('clinicshare').value = 0.0;
+       document.getElementById('caseno').value = 0.0;
       document.getElementById('result').innerText = "Pooja's Profit after Aligner Cost: 0.0";
       document.getElementById('result1').innerText = "Pooja's profit after Clinic share: 0.0";
     }
