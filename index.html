@@ -109,7 +109,7 @@ p {
     <button id="calculateButton" onclick="calculateProfit()">Calculate Profit</button>
     <button id="resetButton" onclick="resetValues()">Reset</button>
     <p id="result">Pooja's Profit after Aligner Cost: 0.0</p>
-    <p id="result2">Share given to clinic : 0.0</p>
+    <p id="result2">Share given to Clinic : 0.0</p>
     <p id="result1">Pooja's profit after Clinic share: 0.0</p>
   </div>
 
@@ -124,7 +124,7 @@ p {
       var profitAfterClinicShare = profitAfterAlignerCost - (profitAfterAlignerCost * clinicShare / 100);
       document.getElementById('result1').innerText = "Pooja's profit after Clinic share: " + profitAfterClinicShare;
       var clinicshare = profitAfterAlignerCost - profitAfterClinicShare;
-      document.getElementById('result2').innerText = "Pooja's profit after Clinic share: " + clinicshare;
+      document.getElementById('result2').innerText = "Share given to Clinic : " + clinicshare;
     }
 
     function resetValues() {
