@@ -1,146 +1,452 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Profit Calculation for Pooja's Patient</title>
-<style>
- body {
-  font-family: "Helvetica";
-  margin: 0;
-  padding: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Adjusted height */
-  background-color: #f0f8ff; /* Light cyan background */
-}
+	<!DOCTYPE html>
+	<html lang="en">
+	<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Profit Calculation for Pooja's Patient</title>
+	<style>
+	 body {
+	  font-family: "Helvetica";
+	  margin: 0;
+	  padding: 0;
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  height: 100vh; /* Adjusted height */
+	  background-color: #f0f8ff; /* Light cyan background */
+	}
 
-#container {
-  background-color: #f0ffff; /* Light cyan container background */
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
-  width: 400px;
-  max-width: 90%;
-}
+	#container {
+	  background-color: #f0ffff; /* Light cyan container background */
+	  border-radius: 10px;
+	  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	  padding: 20px;
+	  width: 400px;
+	  max-width: 90%;
+	}
 
-h2 {
-  font-size: 24px; /* Reduced font size */
-  margin-bottom: 15px; /* Reduced margin */
-  text-align: center;
-  color: #265073; /* Dark blue */
-}
+	h2 {
+	  font-size: 24px; /* Reduced font size */
+	  margin-bottom: 15px; /* Reduced margin */
+	  text-align: center;
+	  color: #265073; /* Dark blue */
+	}
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-  font-size: 16px; /* Reduced font size */
-  color: #265073; /* Dark blue */
-}
+	label {
+	  display: block;
+	  margin-bottom: 5px;
+	  font-weight: bold;
+	  font-size: 16px; /* Reduced font size */
+	  color: #265073; /* Dark blue */
+	}
 
-input {
-  width: calc(100% - 10px);
-  padding: 8px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px; /* Reduced font size */
-  margin-bottom: 10px; /* Reduced margin */
-}
+	input {
+	  width: calc(100% - 10px);
+	  padding: 8px;
+	  border: 1px solid #ccc;
+	  border-radius: 5px;
+	  font-size: 14px; /* Reduced font size */
+	  margin-bottom: 10px; /* Reduced margin */
+	}
 
-button {
+	button {
+	  padding: 10px 20px;
+	  border: none;
+	  border-radius: 5px;
+	  cursor: pointer;
+	  font-size: 16px; /* Reduced font size */
+	  margin-top: 15px; /* Reduced margin */
+	  width: 100%;
+	  display: block;
+	  transition: all 0.3s ease;
+	  color: #fff; /* White text */
+	}
+
+	#calculateButton {
+	  background-color: #265073; /* Dark blue */
+	}
+
+	#calculateButton:hover {
+	  background-color: #50623A; /* Dark green */
+	}
+
+	#resetButton {
+	  background-color: #C6A969; /* Light brown */
+	}
+
+	#resetButton:hover {
+	  background-color: #C68642; /* Darker brown */
+	}
+
+	p {
+	  margin-top: 15px; /* Reduced margin */
+	  font-weight: bold;
+	  font-size: 14px; /* Reduced font size */
+	  color: #333; /* Dark gray */
+	  text-align: center;
+	}
+
+	#result,
+	#result1,
+	#result2 {
+	  color: #211C6A; /* Dark purple */
+	  font-size: 18px; /* Reduced font size */
+	  font-family: "Helvetica";
+	}
+	.button {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 16px; /* Reduced font size */
-  margin-top: 15px; /* Reduced margin */
-  width: 100%;
-  display: block;
+  font-size: 16px;
+  margin-top: 15px;
+  display: inline-block;
   transition: all 0.3s ease;
-  color: #fff; /* White text */
 }
 
-#calculateButton {
+#retrieveButton {
+  background-color: #C6A969; /* Dark blue */
+  color: white;
+}
+
+#retrieveButton:hover {
+  background-color: #C68642; /* Dark green */
+}
+
+#backButton {
+  background-color: #C6A969; /* Dark blue */
+  color: white;
+}
+
+#backButton:hover {
+  background-color: #C68642; /* Dark green */
+}
+
+#saveButton {
   background-color: #265073; /* Dark blue */
+  color: white;
 }
 
-#calculateButton:hover {
+#saveButton:hover {
   background-color: #50623A; /* Dark green */
 }
 
-#resetButton {
-  background-color: #C6A969; /* Light brown */
+#searchButton {
+  background-color: #265073; /* Dark blue */
+  color: white;
 }
 
-#resetButton:hover {
-  background-color: #C68642; /* Darker brown */
+#searchButton:hover {
+  background-color: #50623A; /* Dark green */
 }
 
-p {
-  margin-top: 15px; /* Reduced margin */
+#rtButton {
+  background-color: #265073; /* Dark blue */
+  color: white;
+}
+
+#rtButton:hover {
+  background-color: #50623A; /* Dark green */
+}
+
+#searchResults {
+  margin-top: 20px;
+}
+
+.result-card {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.result-card h4 {
+  margin-bottom: 5px;
+}
+
+.result-card p {
+  margin: 0;
+}
+
+.delete-button {
+  background-color: #ff6347; /* Tomato */
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #d14836; /* Darker red */
+}
+
+.alert-container {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  z-index: 1000;
+}
+
+.alert {
+  padding: 15px;
+  border-radius: 5px;
+  font-size: 16px;
   font-weight: bold;
-  font-size: 14px; /* Reduced font size */
+  margin-bottom: 10px;
+}
+
+.alert-success {
+  background-color: #5cb85c; /* Green */
+  color: white;
+}
+
+.alert-danger {
+  background-color: #d9534f; /* Red */
+  color: white;
+}
+
+.result-card {
+  /* Additional styling for the result cards */
+  overflow-y: auto;
+  max-height: 300px; /* Adjust as needed */
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  background-color: #f8f9fa; /* Light gray */
+}
+
+.result-card h4 {
+  margin-top: 0;
+  margin-bottom: 5px;
+  color: #265073; /* Dark blue */
+}
+
+.result-card p {
+  margin: 5px 0;
   color: #333; /* Dark gray */
-  text-align: center;
 }
 
-#result,
-#result1,
-#result2 {
-  color: #211C6A; /* Dark purple */
-  font-size: 18px; /* Reduced font size */
-  font-family: "Helvetica";
-}
-</style>
-</head>
-<body>
-  <div id="container">
-    <h2>Profit Calculation for Pooja's Patient</h2>
-    <label for="caseno">Patient Name / Case No :</label>
-    <input type="text" id="caseno" value=" ">
-    <label for="totalcost">Total Cost Provided to Patient:</label>
-    <input type="number" id="totalcost" value="0.0" onclick="clearContent(this)">
-    <label for="alignercost">Aligner's Cost:</label>
-    <input type="number" id="alignercost" value="0.0" onclick="clearContent(this)">
-    <label for="alignerdiscount">Aligner's Discount if any:</label>
-    <input type="number" id="alignerdiscount" value="0.0" onclick="clearContent(this)">
-    <label for="clinicshare">Clinic's Share in % if any:</label>
-    <input type="number" id="clinicshare" value="0.0" onclick="clearContent(this)">
-    <button id="calculateButton" onclick="calculateProfit()">Calculate Profit</button>
-    <button id="resetButton" onclick="resetValues()">Reset</button>
-    <p id="result">Pooja's Profit after Aligner Cost: 0.0</p>
-    <p id="result2">Share given to clinic : 0.0</p>
-    <p id="result1">Pooja's profit after Clinic share: 0.0</p>
-  </div>
+	</style>
+	</head>
+	<body>
+	  <div id="container">
+		<h2>Profit Calculation for Pooja's Patient</h2>
+		<label for="caseno">Patient Name / Case No :</label>
+		<input type="text" id="caseno" value=" ">
+		<label for="totalcost">Total Cost Provided to Patient:</label>
+		<input type="number" id="totalcost" value="0.0" onclick="clearContent(this)">
+		<label for="alignercost">Aligner's Cost:</label>
+		<input type="number" id="alignercost" value="0.0" onclick="clearContent(this)">
+		<label for="alignerdiscount">Aligner's Discount if any:</label>
+		<input type="number" id="alignerdiscount" value="0.0" onclick="clearContent(this)">
+		<label for="clinicshare">Clinic's Share in % if any:</label>
+		<input type="number" id="clinicshare" value="0.0" onclick="clearContent(this)">
+		<button id="calculateButton" onclick="calculateProfit()">Calculate Profit</button>
+		<button id="resetButton" onclick="resetValues()">Reset</button>
+		<button id="saveButton" onclick="savePatientData()">Save Patient's Information</button>
+		<button id="retrieveButton" onclick="displaySearchOption()">Retrieve Patient's Information</button>
+		<p id="result">Pooja's Profit after Aligner Cost: 0.0</p>
+		<p id="result2">Share given to clinic : 0.0</p>
+		<p id="result1">Pooja's profit after Clinic share: 0.0</p>
+	  </div>
 
-  <script>
+		<div id="alertContainer" class="alert-container"></div>
+	  <script>
+     // Function to calculate profit based on input fields
     function calculateProfit() {
-      var totalCost = parseInt(document.getElementById('totalcost').value);
-      var alignerCost = parseInt(document.getElementById('alignercost').value);
-      var alignerDiscount = parseInt(document.getElementById('alignerdiscount').value);
-      var clinicShare = parseInt(document.getElementById('clinicshare').value);
+      var totalCost = parseFloat(document.getElementById('totalcost').value);
+      var alignerCost = parseFloat(document.getElementById('alignercost').value);
+      var alignerDiscount = parseFloat(document.getElementById('alignerdiscount').value);
+      var clinicShare = parseFloat(document.getElementById('clinicshare').value);
+
       var profitAfterAlignerCost = totalCost - (alignerCost * (100 - alignerDiscount) / 100);
-      document.getElementById('result').innerText = "Pooja's Profit after Aligner Cost: " + profitAfterAlignerCost;
       var profitAfterClinicShare = profitAfterAlignerCost - (profitAfterAlignerCost * clinicShare / 100);
-      document.getElementById('result1').innerText = "Pooja's profit after Clinic share: " + profitAfterClinicShare;
       var clinicshare = profitAfterAlignerCost - profitAfterClinicShare;
-      document.getElementById('result2').innerText = "Share given to clinic : " + clinicshare;
+	  
+	 
+
+      // Update display
+      document.getElementById('result').innerText = "Pooja's Profit after Aligner Cost: " + profitAfterAlignerCost.toFixed(2);
+document.getElementById('result1').innerText = "Pooja's profit after Clinic share: " + profitAfterClinicShare.toFixed(2);
+document.getElementById('result2').innerText = "Share given to clinic : " + clinicshare.toFixed(2);
     }
 
-    function resetValues() {
-      document.getElementById('totalcost').value = 0.0;
-      document.getElementById('alignercost').value = 0.0;
-      document.getElementById('alignerdiscount').value = 0.0;
-      document.getElementById('clinicshare').value = 0.0;
-       document.getElementById('caseno').value = 0.0;
+    function isDuplicate(name, number) {
+      let patients = JSON.parse(localStorage.getItem('patients')) || [];
+      return patients.some(patient => patient.name === name || patient.number === number);
+    }
+
+    // Function to show alert messages with different colors
+    function showAlert(message, type) {
+      var alertDiv = document.createElement("div");
+      alertDiv.classList.add("alert");
+
+      if (type === "success") {
+        alertDiv.classList.add("alert-success");
+      } else if (type === "danger") {
+        alertDiv.classList.add("alert-danger");
+      }
+
+      alertDiv.innerText = message;
+      document.getElementById("alertContainer").appendChild(alertDiv);
+      
+      // Remove the alert after a certain time (e.g., 3 seconds)
+      setTimeout(function() {
+        alertDiv.remove();
+      }, 3000);
+    }
+
+    // Function to save patient data to local storage
+    function savePatientData() {
+      var name = document.getElementById('caseno').value.trim();
+      var totalCost = parseFloat(document.getElementById('totalcost').value);
+      var alignerCost = parseFloat(document.getElementById('alignercost').value);
+      var alignerDiscount = parseFloat(document.getElementById('alignerdiscount').value);
+      var clinicShare = parseFloat(document.getElementById('clinicshare').value);
+
+      // Check for duplicates
+      if (!name) {
+    showAlert("Please enter the patient's name.", "danger");
+    return;
+  }
+
+      var profitAfterAlignerCost = totalCost - (alignerCost * (100 - alignerDiscount) / 100);
+      var profitAfterClinicShare = profitAfterAlignerCost - (profitAfterAlignerCost * clinicShare / 100);
+      var clinicshare = profitAfterAlignerCost - profitAfterClinicShare;
+	  
+	  
+	  if (totalCost === 0) {
+        showAlert("Please fill in Total Cost Provided to Patient before Saving .", "danger");
+        return;
+      }
+
+      const patientData = {
+        name: name,
+        totalCost: totalCost,
+        alignerCost: alignerCost,
+        alignerDiscount: alignerDiscount,
+        clinicShare: clinicShare,
+        result: profitAfterAlignerCost,
+        result1: profitAfterClinicShare,
+        result2: clinicshare
+      };
+      saveToLocalStorage(patientData);
+      showAlert("Data saved successfully!", "success");
+    }
+
+    // Function to save patient data to local storage
+    function saveToLocalStorage(data) {
+      let patients = JSON.parse(localStorage.getItem('patients')) || [];
+      patients.push(data);
+      localStorage.setItem('patients', JSON.stringify(patients));
+    }
+
+    function displaySearchOption() {
+      let containerDiv = document.getElementById('container');
+      containerDiv.innerHTML = ''; // Clear previous content
+      containerDiv.innerHTML += `
+        <label for="searchInput">Search by Name or Number:</label>
+        <input type="text" id="searchInput">
+        <button id="searchButton" onclick="searchPatient()">Search</button>
+		<button id="backButton" onclick="goBack()">Back</button>
+		<button id="rtButton" onclick="retrieveAllData()">Retrieve  all data</button>
+        <div id="searchResults"></div>
+      `;
+    }
+
+    function searchPatient() {
+      const searchInput = document.getElementById('searchInput').value.trim().toLowerCase();
+      const savedData = JSON.parse(localStorage.getItem('patients')) || [];
+      const searchResults = savedData.filter(patient => patient.name.toLowerCase().includes(searchInput));
+      const searchResultsDiv = document.getElementById('searchResults');
+      searchResultsDiv.innerHTML = ''; // Clear previous search results
+      if (searchResults.length === 0) {
+        searchResultsDiv.innerHTML = '<p>No matching patients found.</p>';
+      } else {
+        searchResults.forEach(patient => {
+          const resultCard = document.createElement('div');
+          resultCard.classList.add('result-card');
+          resultCard.innerHTML = `
+            <h4>Name: ${patient.name}</h4>
+            <p>Total Cost: ${patient.totalCost.toFixed(2)}</p>
+            <p>Aligner Cost: ${patient.alignerCost.toFixed(2)}</p>
+            <p>Aligner Discount: ${patient.alignerDiscount.toFixed(2)}</p>
+            <p>Clinic Share: ${patient.clinicShare.toFixed(2)}</p>
+            <p>Pooja's Profit after Aligner Cost : ${patient.result.toFixed(2)}</p>
+            <p>Share given to clinic : ${patient.result2.toFixed(2)}</p>
+            <p>Pooja's profit after Clinic share: ${patient.result1.toFixed(2)}</p>
+            <button class="delete-button" onclick="deletePatient('${patient.name}')">Delete</button>
+          `;
+          searchResultsDiv.appendChild(resultCard);
+        });
+      }
+    }
+	
+	 function goBack() {
+      window.location.reload(); // Reloads the page to reset to the main screen
+    }
+	
+	// Function to append zeros for 'K' and 'M' inputs
+    function clearContent(input) {
+      let value = input.value.trim().toUpperCase();
+      if (value.endsWith('K')) {
+        input.value = parseFloat(value.replace('K', '')) * 1000;
+      } else if (value.endsWith('M')) {
+        input.value = parseFloat(value.replace('M', '')) * 1000000;
+      }
+    }
+	
+	function retrieveAllData() {
+      let savedData = JSON.parse(localStorage.getItem('patients')) || [];
+      displayResults(savedData);
+    }
+	
+	function displayResults(data) {
+      const searchResultsDiv = document.getElementById('searchResults');
+      searchResultsDiv.innerHTML = ''; // Clear previous search results
+
+      if (data.length === 0) {
+        searchResultsDiv.innerHTML = '<p>No stored patient data found.</p>';
+      } else {
+        data.forEach(patient => {
+          const resultCard = document.createElement('div');
+          resultCard.classList.add('result-card');
+          resultCard.innerHTML = `
+            <h4>Name: ${patient.name}</h4>
+            <p>Total Cost: ${patient.totalCost.toFixed(2)}</p>
+            <p>Aligner Cost: ${patient.alignerCost.toFixed(2)}</p>
+            <p>Aligner Discount: ${patient.alignerDiscount.toFixed(2)}</p>
+            <p>Clinic Share: ${patient.clinicShare.toFixed(2)}</p>
+            <p>Pooja's Profit after Aligner Cost : ${patient.result.toFixed(2)}</p>
+            <p>Share given to clinic : ${patient.result2.toFixed(2)}</p>
+            <p>Pooja's profit after Clinic share: ${patient.result1.toFixed(2)}</p>
+			<button class="delete-button" onclick="deletePatient('${patient.name}')">Delete</button>
+          `;
+          searchResultsDiv.appendChild(resultCard);
+        });
+      }
+    }
+	
+	function resetValues() {
+      document.getElementById('caseno').value = '';
+      document.getElementById('totalcost').value = '0.0';
+      document.getElementById('alignercost').value = '0.0';
+      document.getElementById('alignerdiscount').value = '0.0';
+      document.getElementById('clinicshare').value = '0.0';
       document.getElementById('result').innerText = "Pooja's Profit after Aligner Cost: 0.0";
       document.getElementById('result1').innerText = "Pooja's profit after Clinic share: 0.0";
+      document.getElementById('result2').innerText = "Share given to clinic : 0.0";
     }
 
-    function clearContent(element) {
-      element.value = ""; // Clears the content of the clicked textbox
+    function deletePatient(name) {
+      if (confirm(`Are you sure you want to delete patient ${name}?`)) {
+        let patients = JSON.parse(localStorage.getItem('patients')) || [];
+        patients = patients.filter(patient => patient.name !== name);
+        localStorage.setItem('patients', JSON.stringify(patients));
+        displaySearchOption(); // Refresh the search results after deletion
+        alert(`Patient ${name} deleted successfully.`);
+      }
     }
   </script>
 </body>
